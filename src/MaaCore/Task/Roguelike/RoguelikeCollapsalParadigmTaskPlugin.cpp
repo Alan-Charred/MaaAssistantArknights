@@ -10,7 +10,7 @@
 
 #include <algorithm>
 
-#define DEBUG false
+#define DEBUG true
 
 bool asst::RoguelikeCollapsalParadigmTaskPlugin::verify(const AsstMsg msg, const json::value& details) const
 {
