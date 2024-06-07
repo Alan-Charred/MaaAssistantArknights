@@ -8,6 +8,8 @@ build-*
 *.lo
 *.o
 *.obj
+AsstCaller.h
+AsstPort.h
 
 # Precompiled Headers
 *.gch
