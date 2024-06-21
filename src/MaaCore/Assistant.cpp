@@ -19,6 +19,7 @@
 #include "Task/Interface/MallTask.h"
 #include "Task/Interface/OperBoxTask.h"
 #include "Task/Interface/ReclamationTask.h"
+#include "Task/Interface/ReclamationAlgorithmTask.h"
 #include "Task/Interface/RecruitTask.h"
 #include "Task/Interface/RoguelikeTask.h"
 #include "Task/Interface/SSSCopilotTask.h"
@@ -228,7 +229,8 @@ asst::Assistant::TaskId asst::Assistant::append_task(const std::string& type, co
     ASST_ASSISTANT_APPEND_TASK_FROM_STRING_IF_BRANCH(VideoRecognitionTask)
     ASST_ASSISTANT_APPEND_TASK_FROM_STRING_IF_BRANCH(DepotTask)
     ASST_ASSISTANT_APPEND_TASK_FROM_STRING_IF_BRANCH(OperBoxTask)
-    ASST_ASSISTANT_APPEND_TASK_FROM_STRING_IF_BRANCH(ReclamationTask)
+    ASST_ASSISTANT_APPEND_TASK_FROM_STRING_IF_BRANCH(ReclamationAlgorithmTask)
+    // ASST_ASSISTANT_APPEND_TASK_FROM_STRING_IF_BRANCH(ReclamationTask)
     ASST_ASSISTANT_APPEND_TASK_FROM_STRING_IF_BRANCH(CustomTask)
 #ifdef ASST_DEBUG
     ASST_ASSISTANT_APPEND_TASK_FROM_STRING_IF_BRANCH(DebugTask)

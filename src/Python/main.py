@@ -17,7 +17,7 @@ from collections import defaultdict
 path = pathlib.Path(__file__).resolve().parent.parent.parent
 
 # enable this if you are using English client
-EN_VERSION = True
+EN_VERSION = False
 # ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 SANITY_CHECK = 0 # 0, 1, 2, 3
 # ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -576,6 +576,9 @@ if __name__ == "__main__":
     #     'start_game_enabled': True
     # })
 
+    asst.append_task('ReclamationAlgorithm', {
+    })
+
     # # 刷理智
     # asst.append_task('Fight', {
     #     'medicine': 5,
@@ -585,47 +588,47 @@ if __name__ == "__main__":
     #     }
     # })
 
-    if SANITY_CHECK == 0:
-        asst.append_task('Roguelike', {
-            'theme': 'Sami',
-            'mode': 5,
-            'squad': '远程战术分队',
-            'roles': '取长补短',
-            'core_char': '焰影苇草',
-            'expected_collapsal_paradigms': ['去量化', '目空一些', '睁眼瞎', '图像损坏', '一抹黑'],
-        })
-    elif SANITY_CHECK == 1:
-        asst.append_task('Roguelike', {
-            'theme': 'Sami',
-            'mode': 5,
-            'squad': '远程战术分队',
-            'roles': '稳扎稳打',
-            'core_char': '提丰',
-            'expected_collapsal_paradigms': ['去量化', '目空一些', '睁眼瞎', '图像损坏', '一抹黑'],
-            'double_check_collapsal_paradigms': False
-        })
-    elif SANITY_CHECK == 2:
-        asst.append_task('Roguelike', {
-            'theme': 'Sami',
-            'mode': 0,
-            'squad': '远程战术分队',
-            'roles': '取长补短',
-            'core_char': '焰影苇草',
-            'investment_enabled': True,
-            'use_foldartal': True,
-            'expected_collapsal_paradigms': ['目空一些', '睁眼瞎', '图像损坏', '一抹黑'],
-            'check_collapsal_paradigms': True,
-            'double_check_collapsal_paradigms': True
-        })
-    elif SANITY_CHECK == 3:
-        asst.append_task('Roguelike', {
-            'theme': 'Sami',
-            'mode': 5,
-            'squad': '突击战术分队',
-            'roles': '取长补短',
-            'core_char': '锏',
-            'expected_collapsal_paradigms': ['去量化', '目空一些', '睁眼瞎', '图像损坏', '一抹黑'],
-        })
+    # if SANITY_CHECK == 0:
+    #     asst.append_task('Roguelike', {
+    #         'theme': 'Sami',
+    #         'mode': 5,
+    #         'squad': '远程战术分队',
+    #         'roles': '取长补短',
+    #         'core_char': '焰影苇草',
+    #         'expected_collapsal_paradigms': ['去量化', '目空一些', '睁眼瞎', '图像损坏', '一抹黑'],
+    #     })
+    # elif SANITY_CHECK == 1:
+    #     asst.append_task('Roguelike', {
+    #         'theme': 'Sami',
+    #         'mode': 5,
+    #         'squad': '远程战术分队',
+    #         'roles': '稳扎稳打',
+    #         'core_char': '提丰',
+    #         'expected_collapsal_paradigms': ['去量化', '目空一些', '睁眼瞎', '图像损坏', '一抹黑'],
+    #         'double_check_collapsal_paradigms': False
+    #     })
+    # elif SANITY_CHECK == 2:
+    #     asst.append_task('Roguelike', {
+    #         'theme': 'Sami',
+    #         'mode': 0,
+    #         'squad': '远程战术分队',
+    #         'roles': '取长补短',
+    #         'core_char': '焰影苇草',
+    #         'investment_enabled': True,
+    #         'use_foldartal': True,
+    #         'expected_collapsal_paradigms': ['目空一些', '睁眼瞎', '图像损坏', '一抹黑'],
+    #         'check_collapsal_paradigms': True,
+    #         'double_check_collapsal_paradigms': True
+    #     })
+    # elif SANITY_CHECK == 3:
+    #     asst.append_task('Roguelike', {
+    #         'theme': 'Sami',
+    #         'mode': 5,
+    #         'squad': '突击战术分队',
+    #         'roles': '取长补短',
+    #         'core_char': '锏',
+    #         'expected_collapsal_paradigms': ['去量化', '目空一些', '睁眼瞎', '图像损坏', '一抹黑'],
+    #     })
 
     asst.start()
 

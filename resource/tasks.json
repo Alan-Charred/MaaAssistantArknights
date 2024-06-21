@@ -16760,6 +16760,443 @@
             "Sami@Roguelike@WaitForStartButtonClicked"
         ]
     },
+    "ReclamationAlgorithm@Begin": {
+        "algorithm": "JustReturn",
+        "sub": [
+            "ReclamationAlgorithm@WaitForOrigin"
+        ],
+        "next": [
+            "ReclamationAlgorithm@CatchPerfectSlug"
+        ]
+    },
+    "ReclamationAlgorithm@CatchPerfectSlug": {
+        "template": "ReclamationAlgorithm@Origin",
+        "roi": [
+            517,
+            238,
+            246,
+            200
+        ],
+        "sub": [
+            "SwipeToTopTopLeft",
+            "SwipeToTopTopLeft"
+        ],
+        "next": [
+            "ReclamationAlgorithm@SlugCatchingStage"
+        ]
+    },
+    "ReclamationAlgorithm@SlugCatchingStage": {
+        "algorithm": "OcrDetect",
+        "action": "ClickSelf",
+        "text": [
+            "虫影密植"
+        ],
+        "cache": false,
+        "next": [
+            "ReclamationAlgorithm@EnterBattle"
+        ]
+    },
+    "ReclamationAlgorithm@EnterBattle": {
+        "algorithm": "OcrDetect",
+        "action": "ClickSelf",
+        "text": [
+            "开始行动"
+        ],
+        "roi": [
+            1147,
+            560,
+            98,
+            26
+        ],
+        "next": [
+            "ReclamationAlgorithm@StartAction"
+        ]
+    },
+    "ReclamationAlgorithm@StartAction": {
+        "algorithm": "OcrDetect",
+        "action": "ClickSelf",
+        "text": [
+            "开始行动"
+        ],
+        "roi": [
+            1141,
+            663,
+            101,
+            27
+        ],
+        "next": [
+            "ReclamationAlgorithm@InBattleFlag",
+            "ReclamationAlgorithm@MissionCompletedFlag",
+            "ReclamationAlgorithm@StartAction@LoadingText",
+            "ReclamationAlgorithm@StartAction@LoadingIcon"
+        ]
+    },
+    "ReclamationAlgorithm@InBattle": {
+        "template": "CostSymbol.png",
+        "roi": [
+            1160,
+            495,
+            45,
+            45
+        ]
+    },
+    "ReclamationAlgorithm@InBattleFlag": {
+        "template": "CostSymbol.png",
+        "roi": [
+            1160,
+            495,
+            45,
+            45
+        ],
+        "action": "DoNothing",
+        "postDelay": 5000,
+        "next": [
+            "ReclamationAlgorithm@InBattleFlag",
+            "ReclamationAlgorithm@MissionCompletedFlag"
+        ]
+    },
+    "ReclamationAlgorithm@MissionCompletedFlag": {
+        "algorithm": "OcrDetect",
+        "action": "ClickSelf",
+        "text": [
+            "行动结束"
+        ],
+        "roi": [
+            46,
+            207,
+            357,
+            103
+        ],
+        "postDelay": 500,
+        "next": [
+            "ReclamationAlgorithm@MissionCompletedFlag",
+            "ReclamationAlgorithm@MissionCompletedFlag@LoadingIcon",
+            "ReclamationAlgorithm@CheckCaptureBox"
+        ]
+    },
+    "SwipeToTopTopLeft":{
+        "algorithm": "JustReturn",
+        "action": "Swipe",
+        "specificRect": [
+            640,
+            70,
+            0,
+            0
+        ],
+        "rectMove": [
+            840,
+            480,
+            0,
+            0
+        ],
+        "specialParams":[
+            500
+        ],
+        "postDelay": 800
+    },
+    "ReclamationAlgorithm@WaitForOrigin": {
+        "algorithm": "JustReturn",
+        "postDelay": 500,
+        "next": [
+            "ReclamationAlgorithm@Origin",
+            "ReclamationAlgorithm@StartToday",
+            "ReclamationAlgorithm@WaitForOrigin"
+        ]
+    },
+    "ReclamationAlgorithm@StartToday": {
+        "algorithm": "OcrDetect",
+        "text": ["开启今日"],
+        "roi": [577, 581, 140, 40],
+        "action": "ClickSelf",
+        "next": [
+            "ReclamationAlgorithm@WaitForOrigin"
+        ]
+    },
+    "ReclamationAlgorithm@Origin": {
+        "roi": [
+            517,
+            238,
+            246,
+            200
+        ]
+    },
+    "ReclamationAlgorithm@CheckCaptureBox": {
+        "algorithm": "JustReturn",
+        "sub": [
+            "ReclamationAlgorithm@WaitForAndEnterLuggage",
+            "ReclamationAlgorithm@BreedingBox"
+        ],
+        "next": [
+            "ReclamationAlgorithm@CaptureBox",
+            "ReclamationAlgorithm@ExitBreedingBoxThenRestart"
+        ]
+    },
+    "ReclamationAlgorithm@CaptureBox": {
+        "action": "ClickSelf",
+        "roi": [
+            28,
+            657,
+            42,
+            33
+        ],
+        "next": [
+            "ReclamationAlgorithm@CheckPerfectSlug"
+        ]
+    },
+    "ReclamationAlgorithm@CaptureBoxCapacity": {
+        "algorithm": "OcrDetect",
+        "isAscii": true,
+        "text": [],
+        "roi": [
+            416,
+            25,
+            170,
+            24
+        ]
+    },
+    "ReclamationAlgorithm@WaitForAndEnterLuggage": {
+        "algorithm": "JustReturn",
+        "postDelay": 500,
+        "next": [
+            "ReclamationAlgorithm@Luggage",
+            "ReclamationAlgorithm@WaitForAndEnterLuggage"
+        ]
+    },
+    "ReclamationAlgorithm@CheckPerfectSlug": {
+        "template": "ReclamationAlgorithm@InCaptureBox",
+        "roi": [
+            58,
+            13,
+            43,
+            43
+        ],
+        "next": [
+            "ReclamationAlgorithm@ExitCaptureBoxThenRestart"
+        ]
+    },
+    "ReclamationAlgorithm@ExitCaptureBoxThenRestart": {
+        "algorithm": "JustReturn",
+        "sub": [
+            "ReclamationAlgorithm@Exit",
+            "ReclamationAlgorithm@Exit",
+            "ReclamationAlgorithm@Exit",
+            "ReclamationAlgorithm@Dots",
+            "ReclamationAlgorithm@WaitForAndEnterSave",
+            "ReclamationAlgorithm@Load",
+            "ReclamationAlgorithm@WaitForOrigin"
+        ],
+        "next": [
+            "ReclamationAlgorithm@CatchPerfectSlug"
+        ]
+    },
+    "ReclamationAlgorithm@ExitBreedingBoxThenRestart": {
+        "algorithm": "JustReturn",
+        "sub": [
+            "ReclamationAlgorithm@Exit",
+            "ReclamationAlgorithm@Exit",
+            "ReclamationAlgorithm@Dots",
+            "ReclamationAlgorithm@WaitForAndEnterSave",
+            "ReclamationAlgorithm@Load",
+            "ReclamationAlgorithm@WaitForOrigin"
+        ],
+        "next": [
+            "ReclamationAlgorithm@CatchPerfectSlug"
+        ]
+    },
+    "ReclamationAlgorithm@Luggage": {
+        "action": "ClickSelf",
+        "roi": [
+            200,
+            640,
+            880,
+            60
+        ]
+    },
+    "ReclamationAlgorithm@BreedingBox": {
+        "action": "ClickSelf",
+        "roi": [
+            24,
+            127,
+            53,
+            35
+        ]
+    },
+    "ReclamationAlgorithm@Dots": {
+        "action": "ClickSelf",
+        "roi": [
+            1020,
+            667,
+            33,
+            10
+        ]
+    },
+    "ReclamationAlgorithm@WaitForAndEnterSave": {
+        "algorithm": "JustReturn",
+        "postDelay": 500,
+        "next": [
+            "ReclamationAlgorithm@EnterSave",
+            "ReclamationAlgorithm@WaitForAndEnterSave"
+        ]
+
+    },
+    "ReclamationAlgorithm@EnterSave": {
+        "algorithm": "OcrDetect",
+        "action": "ClickSelf",
+        "text": [
+            "读取存档"
+        ],
+        "roi": [
+            1081,
+            602,
+            67,
+            20
+        ],
+        "postDelay": 500
+    },
+    "ReclamationAlgorithm@Exit": {
+        "algorithm": "JustReturn",
+        "action": "ClickRect",
+        "specificRect": [
+            16,
+            14,
+            23,
+            39
+        ],
+        "postDelay": 500
+    },
+    "ReclamationAlgorithm@Load": {
+        "algorithm": "JustReturn",
+        "next": [
+            "ReclamationAlgorithm@LoadRight",
+            "ReclamationAlgorithm@LoadMiddle"
+        ]
+    },
+    "ReclamationAlgorithm@LoadRight": {
+        "template": "ReclamationAlgorithm@Day",
+        "action": "ClickSelf",
+        "roi": [
+            776,
+            497,
+            178,
+            14
+        ],
+        "next": [
+            "ReclamationAlgorithm@LoadConfirm"
+        ]
+    },
+    "ReclamationAlgorithm@LoadMiddle": {
+        "template": "ReclamationAlgorithm@Day",
+        "action": "ClickSelf",
+        "roi": [
+            626,
+            497,
+            28,
+            14
+        ],
+        "next": [
+            "ReclamationAlgorithm@LoadConfirm"
+        ]
+    },
+    "ReclamationAlgorithm@LoadConfirm": {
+        "algorithm": "OcrDetect",
+        "action": "ClickSelf",
+        "text": [
+            "点击确认"
+        ],
+        "roi": [
+            592,
+            538,
+            96,
+            25
+        ]
+    },
+    "ReclamationAlgorithm@Star_1": {
+        "template": "ReclamationAlgorithm@Star",
+        "roi": [
+            991,
+            167,
+            25,
+            24
+        ]
+    },
+    "ReclamationAlgorithm@Star_2": {
+        "template": "ReclamationAlgorithm@Star",
+        "roi": [
+            1013,
+            167,
+            25,
+            24
+        ]
+    },
+    "ReclamationAlgorithm@Star_3": {
+        "template": "ReclamationAlgorithm@Star",
+        "roi": [
+            1035,
+            167,
+            25,
+            24
+        ]
+    },
+    "ReclamationAlgorithm@MAX_1": {
+        "template": "ReclamationAlgorithm@MAX",
+        "roi": [
+            1120,
+            194,
+            44,
+            15
+        ]
+    },
+    "ReclamationAlgorithm@MAX_2": {
+        "template": "ReclamationAlgorithm@MAX",
+        "roi": [
+            1203,
+            194,
+            44,
+            15
+        ]
+    },
+    "ReclamationAlgorithm@MAX_3": {
+        "template": "ReclamationAlgorithm@MAX",
+        "roi": [
+            1120,
+            252,
+            44,
+            15
+        ]
+    },
+    "ReclamationAlgorithm@MAX_4": {
+        "template": "ReclamationAlgorithm@MAX",
+        "roi": [
+            1203,
+            252,
+            44,
+            15
+        ]
+    },
+    "ReclamationAlgorithm@MAX_5": {
+        "template": "ReclamationAlgorithm@MAX",
+        "roi": [
+            1120,
+            310,
+            44,
+            15
+        ]
+    },
+    "ReclamationAlgorithm@WaitForStartButtonClicked": {
+        "algorithm": "OcrDetect",
+        "text": [
+            "开始行动"
+        ],
+        "roi": [
+            1141,
+            663,
+            101,
+            27
+        ],
+        "next": [
+            "ReclamationAlgorithm@WaitForStartButtonClicked"
+        ]
+    },
     "Reclamation": {
         "template": [
             "Terminal.png",
