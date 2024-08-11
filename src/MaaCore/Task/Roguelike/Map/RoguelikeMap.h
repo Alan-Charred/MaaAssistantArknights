@@ -79,22 +79,22 @@ public:
     void reset();
 
     // ———————— get map details ———————————————————————————————————————————————————————
-    size_t size() const { return m_nodes.size(); }
-    size_t get_num_columns() const { return m_column_indices.size(); }
-    size_t get_curr_pos() const { return m_curr_pos; }
-    size_t get_column_begin(const size_t& column) const;
-    size_t get_column_end(const size_t& column) const;
-    size_t get_next_node() const;
+    [[nodiscard]] size_t size() const { return m_nodes.size(); }
+    [[nodiscard]] size_t get_num_columns() const { return m_column_indices.size(); }
+    [[nodiscard]] size_t get_curr_pos() const { return m_curr_pos; }
+    [[nodiscard]] size_t get_column_begin(const size_t& column) const;
+    [[nodiscard]] size_t get_column_end(const size_t& column) const;
+    [[nodiscard]] size_t get_next_node() const;
 
     // ———————— get node fields ———————————————————————————————————————————————————————
-    RoguelikeNodeType get_node_type(const size_t& node_index) const;
-    size_t get_node_column(const size_t& node_index) const;
-    int get_node_y(const size_t& node_index) const;
-    bool get_node_visited(const size_t& node_index) const;
-    std::vector<size_t> get_node_succs(const size_t& node_index) const;
-    std::vector<size_t> get_node_preds(const size_t& node_index) const;
-    int get_node_cost(const size_t& node_index) const;
-    int get_node_refresh_times(const size_t& node_index) const;
+    [[nodiscard]] RoguelikeNodeType get_node_type(const size_t& node_index) const;
+    [[nodiscard]] size_t get_node_column(const size_t& node_index) const;
+    [[nodiscard]] int get_node_y(const size_t& node_index) const;
+    [[nodiscard]] bool get_node_visited(const size_t& node_index) const;
+    [[nodiscard]] std::vector<size_t> get_node_succs(const size_t& node_index) const;
+    [[nodiscard]] std::vector<size_t> get_node_preds(const size_t& node_index) const;
+    [[nodiscard]] int get_node_cost(const size_t& node_index) const;
+    [[nodiscard]] int get_node_refresh_times(const size_t& node_index) const;
 
     // ———————— set node fields ———————————————————————————————————————————————————————
     void set_node_type(const size_t& node_index, RoguelikeNodeType type);

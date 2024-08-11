@@ -126,8 +126,6 @@ void asst::RoguelikeRoutingTaskPlugin::generate_map()
     }
 
     ProcessTask(*this, { theme + "@Roguelike@RoutingExitThenContinue" }).run(); // 通过退出重进回到初始位置
-
-    return;
 }
 
 void asst::RoguelikeRoutingTaskPlugin::generate_edges(const size_t& node, const cv::Mat& image, const int& node_x)
@@ -186,13 +184,9 @@ void asst::RoguelikeRoutingTaskPlugin::generate_edges(const size_t& node, const 
         const int rightmost_y = (rightmost_y_min_p.y + rightmost_y_max_p.y) / 2;
 
         if (std::abs(prev_y - node_y) < m_direction_threshold &&
-            std::abs(leftmost_y - rightmost_y) < m_direction_threshold) {
-            m_map.add_edge(prev, node);
-        }
-        else if (prev_y < node_y && leftmost_y < rightmost_y - m_direction_threshold) {
-            m_map.add_edge(prev, node);
-        }
-        else if (prev_y > node_y && leftmost_y > rightmost_y + m_direction_threshold) {
+                std::abs(leftmost_y - rightmost_y) < m_direction_threshold ||
+            prev_y < node_y && leftmost_y < rightmost_y - m_direction_threshold ||
+            prev_y > node_y && leftmost_y > rightmost_y + m_direction_threshold) {
             m_map.add_edge(prev, node);
         }
     }
@@ -256,7 +250,7 @@ void asst::RoguelikeRoutingTaskPlugin::refresh_following_combat_nodes()
         node_analyzer.set_task_info(theme + "@Roguelike@RoutingNodeAnalyze");
         node_analyzer.set_roi(next_node_rect);
         if (node_analyzer.analyze()) {
-            Matcher::Result match_results = node_analyzer.get_result();
+            const Matcher::Result match_results& = node_analyzer.get_result();
             m_map.set_node_type(next_node, RoguelikeMapInfo.templ2type(theme, match_results.templ_name));
         }
     }
