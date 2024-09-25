@@ -8,6 +8,10 @@
 // ReclamationMode::ProsperityInSave 专用配置及插件
 #include "Task/Reclamation/ReclamationCraftTaskPlugin.h"
 
+// ReclamationMode::PerfectSlugs 专用配置及插件
+#include "Task/Reclamation/ReclamationBattleTaskPlugin.h"
+#include "Task/Reclamation/ReclamationCheckCaptureBoxTaskPlugin.h"
+
 #include "Utils/Logger.hpp"
 
 asst::ReclamationTask::ReclamationTask(const AsstCallback& callback, Assistant* inst) :
@@ -19,6 +23,10 @@ asst::ReclamationTask::ReclamationTask(const AsstCallback& callback, Assistant* 
 
     // ReclamationMode::ProsperityInSave 专用参数
     m_reclamation_task_ptr->register_plugin<ReclamationCraftTaskPlugin>(m_config_ptr);
+
+    // ReclamationMode::PerfectSlugs 专用配置及插件
+    m_reclamation_task_ptr->register_plugin<ReclamationBattleTaskPlugin>(m_config_ptr);
+    m_reclamation_task_ptr->register_plugin<ReclamationCheckCaptureBoxTaskPlugin>(m_config_ptr);
 
     m_subtasks.emplace_back(m_reclamation_task_ptr);
 }
@@ -46,6 +54,9 @@ bool asst::ReclamationTask::set_params(const json::value& params)
         break;
     case ReclamationMode::ProsperityInSave:
         m_reclamation_task_ptr->set_tasks({ theme + "@RA@ProsperityInSave" });
+        break;
+    case ReclamationMode::PerfectSlugs:
+        m_reclamation_task_ptr->set_tasks({ theme + "@RA@PerfectSlugs" });
         break;
     }
 
