@@ -12537,5 +12537,274 @@
         "template": "Tales@RA@WorkbenchButton.png",
         "roi": [615, 645, 133, 55],
         "action": "ClickSelf"
+    },
+    "Tales@RA@PerfectSlugs": {
+        "doc": "生息演算「沙洲遗闻」刷完美源石虫 <PerfectSlugs> 任务入口",
+        "algorithm": "JustReturn",
+        "next": ["Tales@RA@PS-Resume", "Tales@RA@PS-Luggage", "Tales@RA@PS-Navigation"]
+    },
+    "Tales@RA@PS-Resume": {
+        "doc": "在主题入口界面点击 <继续演算> 开启新游戏",
+        "algorithm": "OcrDetect",
+        "action": "ClickSelf",
+        "text": ["继续演算"],
+        "roi": [1064, 620, 171, 50],
+        "next": ["Tales@RA@PS-Luggage"]
+    },
+    "Tales@RA@PS-Navigation": {
+        "algorithm": "JustReturn",
+        "sub": ["Tales@RA@Navigation"],
+        "next": ["Tales@RA@PerfectSlugs"]
+    },
+    "Tales@RA@PS-GoTo-TargetZone": {
+        "doc": "前往并点击目标区块节点, 未来改由 GoTo 插件实现",
+        "algorithm": "JustReturn",
+        "sub": [
+            "Tales@RA@PNS-WaitForHeadquartersButton",
+            "Tales@RA@ReturnToOrigin",
+            "Tales@RA@PS-MoveTowardsTargetZone*2",
+            "Tales@RA@PS-ClickTargetZone"
+        ],
+        "next": ["Tales@RA@PS-EnterTargetZone"]
+    },
+    "Tales@RA@PS-WaitForHeadquartersButton": {
+        "doc": "等待直到识别到左下角驻扎地图标",
+        "algorithm": "JustReturn",
+        "next": ["Tales@RA@PS-RecogniseHeadquartersButton", "Tales@RA@PS-WaitForHeadquartersButton"]
+    },
+    "Tales@RA@PS-RecogniseHeadquartersButton": {
+        "doc": "识别到左下角驻扎地图标",
+        "baseTask": "Tales@RA@ClickHeadquartersButton",
+        "template": "Tales@RA@HeadquartersButton.png",
+        "action": "DoNothing"
+    },
+    "Tales@RA@PS-MoveTowardsTargetZone": {
+        "algorithm": "JustReturn",
+        "action": "Swipe",
+        "specificRect": [640, 70, 0, 0],
+        "rectMove": [900, 640, 0, 0],
+        "specialParams": [1000, 0, 3, 0],
+        "postDelay": 1000
+    },
+    "Tales@RA@PS-ClickTargetZone": {
+        "doc": "点击目标区块节点",
+        "algorithm": "OcrDetect",
+        "text": ["幽邃巨洞"],
+        "ocrReplace": [["幽遮巨洞", "幽邃巨洞"]],
+        "roi": [100, 100, 960, 500],
+        "action": "ClickSelf"
+    },
+    "Tales@RA@PS-EnterTargetZone": {
+        "doc": "进入目标区块节点",
+        "baseTask": "Tales@RA@EnterNode",
+        "sub": ["Tales@RA@ConfirmSquad"],
+        "next": ["Tales@RA@PS-EnterTargetZone@NextAfterLoadingText", "Tales@RA@PS-CaptureSlugs"]
+    },
+    "Tales@RA@PS-CaptureSlugs": {
+        "doc": [
+            "调用 ReclamationBattleTaskPlugin 捕捉源石虫",
+            "偶尔会直接跳过战斗结算界面，在 next 里加入 <Tales@RA@PS-Luggage> 以防万一"
+        ],
+        "algorithm": "JustReturn",
+        "next": [
+            "Tales@RA@PS-MissionCompletedFlag",
+            "Tales@RA@PS-Luggage",
+            "Tales@RA@PS-CaptureSlugs@NextAfterMerelyWaiting"
+        ]
+    },
+    "Tales@RA@PS-MissionCompletedFlag": {
+        "algorithm": "OcrDetect",
+        "text": ["行动结束"],
+        "roi": [46, 207, 357, 103],
+        "action": "ClickSelf",
+        "next": [
+            "Tales@RA@PS-Luggage",
+            "Tales@RA@PS-MissionCompletedFlag@NextAfterLoadingIcon",
+            "Tales@RA@PS-MissionCompletedFlag"
+        ]
+    },
+    "Tales@RA@PS-Luggage": {
+        "doc": "点击进入行囊",
+        "template": "Tales@RA@Luggage.png",
+        "roi": [200, 640, 880, 60],
+        "action": "ClickSelf",
+        "next": ["Tales@RA@PS-BreedingBox"]
+    },
+    "Tales@RA@PS-BreedingBox": {
+        "doc": "点击进入饲养箱",
+        "template": "Tales@RA@BreedingBox.png",
+        "roi": [24, 127, 53, 35],
+        "action": "ClickSelf",
+        "next": ["Tales@RA@PS-CaptureBox", "Tales@RA@PS-LeaveLuggage"]
+    },
+    "Tales@RA@PS-CaptureBox": {
+        "doc": "点击进入捕获箱",
+        "template": "Tales@RA@CaptureBox.png",
+        "roi": [28, 657, 42, 33],
+        "action": "ClickSelf",
+        "next": ["Tales@RA@PS-CheckCaptureBox"]
+    },
+    "Tales@RA@PS-CheckCaptureBox": {
+        "doc": "调用 ReclamationCheckCaptureBoxTaskPlugin 检查捕获箱",
+        "template": "Tales@RA@InCaptureBox.png",
+        "roi": [58, 13, 43, 43],
+        "next": ["Tales@RA@PS-LeaveLuggage"]
+    },
+    "Tales@RA@PS-LeaveLuggage": {
+        "doc": "点击左上角深色箭头直到退出行囊",
+        "baseTask": "Tales@RA@BackDark",
+        "template": "Tales@RA@BackDark.png",
+        "next": ["Tales@RA@PS-ReadyToLoadSave", "Tales@RA@PS-LeaveLuggage"]
+    },
+    "Tales@RA@PS-ReadyToLoadSave": {
+        "doc": "识别到左下角驻扎地图标",
+        "baseTask": "Tales@RA@ClickHeadquartersButton",
+        "template": "Tales@RA@HeadquartersButton.png",
+        "action": "DoNothing",
+        "next": ["Tales@RA@PS-Dots"]
+    },
+    "Tales@RA@PS-Dots": {
+        "doc": "点击右下角 Dots",
+        "baseTask": "Tales@RA@Dots",
+        "template": "Tales@RA@Dots.png",
+        "next": ["Tales@RA@PS-LoadSave", "Tales@RA@PS-Dots"]
+    },
+    "Tales@RA@PS-LoadSave": {
+        "doc": "点击右下角读取存档图标, 选择最右侧存档, 点击 <点击确认> 文字位置确认读取存档",
+        "baseTask": "Tales@RA@LoadSave",
+        "template": "Tales@RA@LoadSave.png",
+        "sub": ["Tales@RA@SelectRightSave", "Tales@RA@ConfirmToLoadSave"],
+        "next": [
+            "Tales@RA@PS-StartTodayAfterLoadSave",
+            "Tales@RA@PS-LoadSave@NextAfterLoadingText",
+            "Tales@RA@PS-LoadSave@NextAfterMerelyWaiting"
+        ]
+    },
+    "Tales@RA@PS-StartTodayAfterLoadSave": {
+        "doc": "生息点数未达到上限, 在驻扎地产出结算界面点击确认符号开启今日",
+        "baseTask": "Tales@RA@StartToday",
+        "template": ["Tales@RA@StartTodayConfirmHollow.png", "Tales@RA@StartTodayConfirmYellow.png"],
+        "next": [
+            "Tales@RA@PS-StartTodayAfterLoadSave@NextAfterLoadingText",
+            "Tales@RA@PS-StartTodayAfterLoadSave",
+            "Tales@RA@PS-GoTo-TargetZone"
+        ]
+    },
+    "Tales@RA@PS-CaptureBoxCapacity": {
+        "baseTask": "NumberOcrReplace",
+        "roi": [416, 25, 200, 24]
+    },
+    "Tales@RA@PS-ScrollDown": {
+        "doc": "在捕获箱界面向下滑动屏幕",
+        "algorithm": "JustReturn",
+        "action": "Swipe",
+        "specificRect": [640, 360, 0, 0],
+        "rectMove": [640, 120, 0, 0],
+        "specialParams": [1000, 0, 3, 0],
+        "postDelay": 300
+    },
+    "Tales@RA@PS-Star_1": {
+        "template": "Tales@RA@PS-Star.png",
+        "roi": [991, 167, 25, 24]
+    },
+    "Tales@RA@PS-Star_2": {
+        "template": "Tales@RA@PS-Star.png",
+        "roi": [1013, 167, 25, 24]
+    },
+    "Tales@RA@PS-Star_3": {
+        "template": "Tales@RA@PS-Star.png",
+        "roi": [1035, 167, 25, 24]
+    },
+    "Tales@RA@PS-MAX_1": {
+        "template": "Tales@RA@PS-MAX.png",
+        "roi": [1120, 194, 44, 15]
+    },
+    "Tales@RA@PS-MAX_2": {
+        "template": "Tales@RA@PS-MAX.png",
+        "roi": [1203, 194, 44, 15]
+    },
+    "Tales@RA@PS-MAX_3": {
+        "template": "Tales@RA@PS-MAX.png",
+        "roi": [1120, 252, 44, 15]
+    },
+    "Tales@RA@PS-MAX_4": {
+        "template": "Tales@RA@PS-MAX.png",
+        "roi": [1203, 252, 44, 15]
+    },
+    "Tales@RA@PS-MAX_5": {
+        "template": "Tales@RA@PS-MAX.png",
+        "roi": [1120, 310, 44, 15]
+    },
+    "Tales@RA@PS-InBattle": {
+        "template": "CostSymbol.png",
+        "roi": [1160, 495, 45, 45]
+    },
+    "Tales@RA@PS-NoSlug_Left": {
+        "roi": [390, 256, 285, 235],
+        "templThreshold": 0.95
+    },
+    "Tales@RA@PS-NoSlug_Up": {
+        "roi": [585, 130, 80, 120],
+        "templThreshold": 0.85
+    },
+    "Tales@RA@PS-NoSlug_Middle": {
+        "roi": [565, 250, 180, 60],
+        "templThreshold": 0.85
+    },
+    "Tales@RA@PS-NoSlug_Left2": {
+        "roi": [550, 220, 100, 145],
+        "templThreshold": 0.65
+    },
+    "Tales@RA@PS-NoSlug_Up2": {
+        "roi": [725, 160, 80, 55],
+        "templThreshold": 0.65
+    },
+    "Tales@RA@OperationNameGuard": {
+        "algorithm": "OcrDetect",
+        "text": ["OPERATION"],
+        "isAscii": true,
+        "roi": [544, 279, 192, 42]
+    },
+    "Tales@RA@SlugName": {
+        "algorithm": "OcrDetect",
+        "text": [
+            "灼热源石虫",
+            "炽焰源石虫",
+            "源石虫",
+            "源石虫·α",
+            "变异岩蛛",
+            "变异岩蛛·α",
+            "酸液源石虫",
+            "酸液源石虫·α",
+            "高能源石虫",
+            "高能源石虫·α",
+            "爆裂源石虫",
+            "变异巨岩蛛",
+            "变异巨岩蛛·α",
+            "黑水源石虫",
+            "黑水源石虫·α",
+            "“闪亮噗噜”",
+            "“庞贝”",
+            "振翅源石虫",
+            "冲锋源石虫",
+            "披甲源石虫"
+        ],
+        "fullMatch": true,
+        "ocrReplace": [
+            ["\\(", ""],
+            ["（", ""],
+            ["《", ""],
+            ["\\)", ""],
+            ["）", ""],
+            ["》", ""],
+            ["_α", "·α"],
+            ["源石虫α", "源石虫·α"],
+            ["变异岩蛛α", "变异岩蛛·α"],
+            ["酸液源石虫α", "酸液源石虫·α"],
+            ["高能源石虫α", "高能源石虫·α"],
+            ["变异巨岩蛛α", "变异巨岩蛛·α"],
+            ["黑水源石虫α", "黑水源石虫·α"]
+        ],
+        "roi": [1035, 40, 150, 23]
     }
 }

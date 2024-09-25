@@ -14,6 +14,7 @@ enum class ReclamationMode // 对应 Roguelike Mode
 {
     ProsperityNoSave = 0,  // 0 - 无存档刷繁荣点数
     ProsperityInSave = 1,  // 1 - 有存档刷繁荣点数
+    PerfectSlugs = 2       // 2 - 刷完美源石虫
 };
 
 enum class ReclamationDifficulty // 对应 Roguelike Difficulty
@@ -35,7 +36,8 @@ public:
 
     static constexpr bool is_valid_mode(const ReclamationMode& mode, [[maybe_unused]] const std::string_view theme)
     {
-        return mode == ReclamationMode::ProsperityNoSave || mode == ReclamationMode::ProsperityInSave;
+        return mode == ReclamationMode::ProsperityNoSave || mode == ReclamationMode::ProsperityInSave ||
+               mode == ReclamationMode::PerfectSlugs;
     }
 
     static constexpr bool is_valid_difficulty(const ReclamationDifficulty& difficulty)
