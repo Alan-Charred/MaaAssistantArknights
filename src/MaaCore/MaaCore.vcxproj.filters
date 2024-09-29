@@ -731,6 +731,12 @@
     <ClInclude Include="LDExtras.h">
       <Filter>Source\Controller</Filter>
     </ClInclude>
+    <ClInclude Include="Task\Reclamation\ReclamationBattleTaskPlugin.h">
+      <Filter>Source\Task\Reclamation</Filter>
+    </ClInclude>
+    <ClInclude Include="Task\Reclamation\ReclamationCheckCaptureBoxTaskPlugin.h">
+      <Filter>Source\Task\Reclamation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vision\VisionHelper.cpp">
@@ -1226,6 +1232,12 @@
     </ClCompile>
     <ClCompile Include="LDExtras.cpp">
       <Filter>Source\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="Task\Reclamation\ReclamationBattleTaskPlugin.cpp">
+      <Filter>Source\Task\Reclamation</Filter>
+    </ClCompile>
+    <ClCompile Include="Task\Reclamation\ReclamationCheckCaptureBoxTaskPlugin.cpp">
+      <Filter>Source\Task\Reclamation</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -88,6 +88,8 @@
     <ClInclude Include="Task\Miscellaneous\TaskFileReloadTask.h" />
     <!-- 生息演算 .h Begin -->
     <ClInclude Include="Task\Interface\ReclamationTask.h" />
+    <ClInclude Include="Task\Reclamation\ReclamationBattleTaskPlugin.h" />
+    <ClInclude Include="Task\Reclamation\ReclamationCheckCaptureBoxTaskPlugin.h" />
     <ClInclude Include="Task\Reclamation\ReclamationConfig.h" />
     <ClInclude Include="Task\Reclamation\AbstractReclamationTaskPlugin.h" />
     <ClInclude Include="Task\Reclamation\ReclamationCraftTaskPlugin.h" />
@@ -279,6 +281,8 @@
     <ClCompile Include="Task\Miscellaneous\TaskFileReloadTask.cpp" />
     <!-- 生息演算 .cpp Begin -->
     <ClCompile Include="Task\Interface\ReclamationTask.cpp" />
+    <ClCompile Include="Task\Reclamation\ReclamationBattleTaskPlugin.cpp" />
+    <ClCompile Include="Task\Reclamation\ReclamationCheckCaptureBoxTaskPlugin.cpp" />
     <ClCompile Include="Task\Reclamation\ReclamationConfig.cpp" />
     <ClCompile Include="Task\Reclamation\AbstractReclamationTaskPlugin.cpp" />
     <ClCompile Include="Task\Reclamation\ReclamationCraftTaskPlugin.cpp" />

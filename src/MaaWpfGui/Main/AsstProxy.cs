@@ -1269,6 +1269,9 @@ namespace MaaWpfGui.Main
             string what = details["what"]?.ToString() ?? string.Empty;
             switch (what)
             {
+                case "CustomCallback":
+                    Instances.TaskQueueViewModel.AddLog(subTaskDetails!["message"]?.ToString());
+                    break;
                 case "StageDrops":
                     {
                         string allDrops = string.Empty;
