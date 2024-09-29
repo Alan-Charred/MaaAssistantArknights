@@ -2641,6 +2641,7 @@ namespace MaaWpfGui.ViewModels.UI
         [
             new() { Display = LocalizationHelper.GetString("ReclamationModeProsperityNoSave"), Value = "0" },
             new() { Display = LocalizationHelper.GetString("ReclamationModeProsperityInSave"), Value = "1" },
+            new() { Display = "刷完美源石虫", Value = "2" },
         ];
 
         private string _reclamationMode = ConfigurationHelper.GetValue(ConfigurationKeys.ReclamationMode, "1");

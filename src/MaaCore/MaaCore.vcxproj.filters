@@ -737,6 +737,12 @@
     <ClInclude Include="Vision\Battle\SupportListAnalyzer.h">
       <Filter>Source\Vision\Battle</Filter>
     </ClInclude>
+    <ClInclude Include="Task\Reclamation\ReclamationBattleTaskPlugin.h">
+      <Filter>Source\Task\Reclamation</Filter>
+    </ClInclude>
+    <ClInclude Include="Task\Reclamation\ReclamationCheckCaptureBoxTaskPlugin.h">
+      <Filter>Source\Task\Reclamation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vision\VisionHelper.cpp">
@@ -1238,6 +1244,12 @@
     </ClCompile>
     <ClCompile Include="Vision\Battle\SupportListAnalyzer.cpp">
       <Filter>Source\Vision\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Task\Reclamation\ReclamationBattleTaskPlugin.cpp">
+      <Filter>Source\Task\Reclamation</Filter>
+    </ClCompile>
+    <ClCompile Include="Task\Reclamation\ReclamationCheckCaptureBoxTaskPlugin.cpp">
+      <Filter>Source\Task\Reclamation</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
