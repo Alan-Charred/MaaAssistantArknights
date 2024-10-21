@@ -49,7 +49,7 @@ private:
         const bool& camera_move = false);
 
     // ———————— constants and variables ———————————————————————————————————————————————
-    int m_strategy = 4;
+    int m_strategy = 5;
     int m_step = 0;
     bool m_first_deploy = true;
 };

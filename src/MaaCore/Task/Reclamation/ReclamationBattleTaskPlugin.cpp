@@ -609,6 +609,61 @@ bool asst::ReclamationBattleTaskPlugin::do_once()
         } // switch m_step
         break;
     } // switch m_strategy case 4
+    case 5: {
+        // ———————— 幽邃巨洞 左上 ————————
+        switch (m_step) {
+        case 0: {
+            if (m_cost < 17) {
+                return true;
+            }
+            // 滑动到指地点
+            ctrler()->swipe(Point(150, 360), Point(1280, 360), 500, false, 3, 0);
+            sleep(500);
+            // 伊内斯
+            deploy_oper(360, 660, 396, 660, 595, 275, battle::DeployDirection::Right);
+            sleep(1000);
+            break;
+        }
+        case 1: {
+            if (m_cost < 19) {
+                return true;
+            }
+            // 阿斯卡伦
+            deploy_oper(760, 660, 759, 660, 595, 340, battle::DeployDirection::Down);
+            sleep(1000);
+            // 夜刀
+            deploy_oper(43, 660, 59, 660, 670, 260, battle::DeployDirection::Down);
+            retreat_oper(595, 250, 565, 205);
+            // 夜刀
+            deploy_oper(43, 660, 59, 660, 665, 300, battle::DeployDirection::Down);
+            retreat_oper(590, 290, 560, 220);
+            speed_up();
+            break;
+        }
+        case 2: {
+            if (m_cost < 30) {
+                return true;
+            }
+            else if (m_cost < 40) {
+                // 夜刀
+                deploy_oper(43, 660, 59, 660, 665, 330, battle::DeployDirection::Down);
+                retreat_oper(590, 310, 560, 230);
+                return true;
+            }
+            else {
+                // 离开当前区块
+                ProcessTask(*this, {"Tales@RA@LeaveCurrentZone"}).run();
+                sleep(1000);
+                ProcessTask(*this, {"Tales@RA@DialogConfirmYellow"}).run();
+                sleep(1000);
+                return true;
+            }
+        }
+        default:
+            break;
+        } // switch m_step
+        break;
+    } // switch m_strategy case 5
     default:
         break;
     } // switch m_strategy
