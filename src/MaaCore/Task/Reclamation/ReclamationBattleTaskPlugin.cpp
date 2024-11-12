@@ -664,6 +664,39 @@ bool asst::ReclamationBattleTaskPlugin::do_once()
         } // switch m_step
         break;
     } // switch m_strategy case 5
+    case 6: {
+        // ———————— 幽邃巨洞 左上 ————————
+        switch (m_step) {
+        case 0: {
+            if (m_cost < 17) {
+                return true;
+            }
+            // 滑动到指地点
+            ctrler()->swipe(Point(1280, 150), Point(650, 650), 500, false, 3, 0);
+            sleep(500);
+            // 缄默德克萨斯
+            deploy_oper(120, 660, 178, 660, 745, 310, battle::DeployDirection::Up, false);
+            sleep(500);
+            speed_up();
+            break;
+        }
+        case 1: {
+            if (m_cost < 26) {
+                return true;
+            }
+            // 夜刀
+            deploy_oper(40, 660, 59, 660, 830, 310, battle::DeployDirection::Right, true, 830, 310);
+            // 离开当前区块
+            ProcessTask(*this, {"Tales@RA@LeaveCurrentZone"}).run();
+            sleep(1000);
+            ProcessTask(*this, {"Tales@RA@DialogConfirmYellow"}).run();
+            sleep(1000);
+            break;
+        }
+        default:
+            break;
+        } // switch m_step
+    } // switch m_strategy case 6
     default:
         break;
     } // switch m_strategy
