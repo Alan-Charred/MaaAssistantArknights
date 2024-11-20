@@ -13006,7 +13006,9 @@
             "Tales@RA@PS-MoveTowardsTargetZone*2",
             "Tales@RA@PS-ClickTargetZone"
         ],
-        "next": ["Tales@RA@PS-EnterTargetZone"]
+        "subErrorIgnored": true,
+        "next": ["Tales@RA@PS-EnterTargetZone"],
+        "onErrorNext": ["Tales@RA@PS-GoTo-TargetZone"]
     },
     "Tales@RA@PS-WaitForHeadquartersButton": {
         "doc": "等待直到识别到左下角驻扎地图标",
