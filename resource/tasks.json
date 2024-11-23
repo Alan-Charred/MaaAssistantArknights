@@ -13116,6 +13116,7 @@
         "doc": "点击右下角读取存档图标, 选择最右侧存档, 点击 <点击确认> 文字位置确认读取存档",
         "baseTask": "Tales@RA@LoadSave",
         "template": "Tales@RA@LoadSave.png",
+        "postDelay": 500,
         "sub": ["Tales@RA@SelectRightSave", "Tales@RA@ConfirmToLoadSave"],
         "next": [
             "Tales@RA@PS-StartTodayAfterLoadSave",
