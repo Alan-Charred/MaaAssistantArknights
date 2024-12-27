@@ -697,6 +697,52 @@ bool asst::ReclamationBattleTaskPlugin::do_once()
             break;
         } // switch m_step
     } // switch m_strategy case 6
+    case 7: {
+        // ———————— 幽邃巨洞 左上 ————————
+        switch (m_step) {
+        case 0: {
+            if (m_cost < 17) {
+                return true;
+            }
+            // 缄默德克萨斯
+            deploy_oper(120, 660, 178, 660, 665, 160, battle::DeployDirection::Right, true, 690, 225);
+            sleep(3000);
+            retreat_oper(625, 230, 605, 230);
+            break;
+        }
+        case 1: {
+            if (m_cost < 19) {
+                return true;
+            }
+            // 逻格斯
+            deploy_oper(760, 660, 759, 660, 770, 285, battle::DeployDirection::Left);
+            break;
+        }
+        case 2: {
+            if (m_cost < 15) {
+                return true;
+            }
+            // 3级源石虫引诱器械;
+            deploy_oper(920, 660, 904, 660, 690, 240, battle::DeployDirection::None);
+            // 2级源石虫引诱器械;
+            deploy_oper(1000, 660, 977, 660, 690, 305, battle::DeployDirection::None);
+            // 1级源石虫引诱器械;
+            deploy_oper(1080, 660, 1050, 660, 620, 240, battle::DeployDirection::None);
+            // 夜刀
+            deploy_oper(40, 660, 59, 660, 395, 340, battle::DeployDirection::Left, true, 560, 315);
+            retreat_oper(475, 315, 605, 230);
+            break;
+        }
+        case 3: {
+            // 夜刀
+            deploy_oper(40, 660, 59, 660, 560, 340, battle::DeployDirection::Left);
+            retreat_oper(475, 315, 605, 230);
+            return true;
+        }
+        default:
+            break;
+        } // switch m_step
+    } // switch m_strategy case 7
     default:
         break;
     } // switch m_strategy

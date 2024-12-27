@@ -13032,8 +13032,8 @@
     "Tales@RA@PS-ClickTargetZone": {
         "doc": "点击目标区块节点",
         "algorithm": "OcrDetect",
-        "text": ["幽邃巨洞"],
-        "ocrReplace": [["幽遮巨洞", "幽邃巨洞"]],
+        "text": ["熔金巢穴"],
+        "ocrReplace": [["幽遮巨洞", "幽邃巨洞"], ["熔金单穴", "熔金巢穴"]],
         "roi": [100, 100, 960, 500],
         "action": "ClickSelf"
     },
@@ -13111,6 +13111,10 @@
         "baseTask": "Tales@RA@Dots",
         "template": "Tales@RA@Dots.png",
         "next": ["Tales@RA@PS-LoadSave", "Tales@RA@PS-Dots"]
+    },
+    "Tales@RA@SelectLastSave": {
+        "algorithm": "JustReturn",
+        "next": ["Tales@RA@SelectRightSave", "Tales@RA@SelectMiddleSave"]
     },
     "Tales@RA@PS-LoadSave": {
         "doc": "点击右下角读取存档图标, 选择最右侧存档, 点击 <点击确认> 文字位置确认读取存档",
@@ -13247,7 +13251,9 @@
             ["酸液源石虫α", "酸液源石虫·α"],
             ["高能源石虫α", "高能源石虫·α"],
             ["变异巨岩蛛α", "变异巨岩蛛·α"],
-            ["黑水源石虫α", "黑水源石虫·α"]
+            ["黑水源石虫α", "黑水源石虫·α"],
+            ["振强源石虫", "振翅源石虫"],
+            ["庞贝.*", "“庞贝”"]
         ],
         "roi": [1035, 40, 150, 23]
     }
