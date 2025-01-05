@@ -696,6 +696,7 @@ bool asst::ReclamationBattleTaskPlugin::do_once()
         default:
             break;
         } // switch m_step
+        break;
     } // switch m_strategy case 6
     case 7: {
         // ———————— 幽邃巨洞 左上 ————————
@@ -742,7 +743,36 @@ bool asst::ReclamationBattleTaskPlugin::do_once()
         default:
             break;
         } // switch m_step
+        break;
     } // switch m_strategy case 7
+    case 8: {
+        // ———————— 幽邃巨洞 左上 ————————
+        switch (m_step) {
+        case 0: {
+            if (m_cost < 22) {
+                return true;
+            }
+            // 缄默德克萨斯
+            deploy_oper(120, 660, 178, 660, 885, 135, battle::DeployDirection::Right, true, 795, 220);
+            sleep(6000);
+            // 阿斯卡伦
+            deploy_oper(760, 660, 759, 660, 880, 235, battle::DeployDirection::Right, true, 785, 265);
+            sleep(2000);
+            break;
+        }
+        case 1: {
+            // 离开当前区块
+            ProcessTask(*this, {"Tales@RA@LeaveCurrentZone"}).run();
+            sleep(1000);
+            ProcessTask(*this, {"Tales@RA@DialogConfirmYellow"}).run();
+            sleep(1000);
+            break;
+        }
+        default:
+            break;
+        } // switch m_step
+        break;
+    } // switch m_strategy case 8
     default:
         break;
     } // switch m_strategy
