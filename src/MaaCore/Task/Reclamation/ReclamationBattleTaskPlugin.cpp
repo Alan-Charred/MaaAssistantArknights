@@ -730,13 +730,13 @@ bool asst::ReclamationBattleTaskPlugin::do_once()
             // 1级源石虫引诱器械;
             deploy_oper(1080, 660, 1050, 660, 620, 240, battle::DeployDirection::None);
             // 夜刀
-            deploy_oper(40, 660, 59, 660, 395, 340, battle::DeployDirection::Left, true, 560, 315);
+            deploy_oper(40, 660, 59, 660, 395, 340, battle::DeployDirection::Down, true, 560, 315);
             retreat_oper(475, 315, 605, 230);
             break;
         }
         case 3: {
             // 夜刀
-            deploy_oper(40, 660, 59, 660, 560, 340, battle::DeployDirection::Left);
+            deploy_oper(40, 660, 59, 660, 560, 340, battle::DeployDirection::Down);
             retreat_oper(475, 315, 605, 230);
             return true;
         }
