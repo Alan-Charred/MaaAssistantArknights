@@ -720,25 +720,63 @@ bool asst::ReclamationBattleTaskPlugin::do_once()
             break;
         }
         case 2: {
-            if (m_cost < 15) {
+            if (m_cost < 5) {
                 return true;
             }
             // 3级源石虫引诱器械;
-            deploy_oper(920, 660, 904, 660, 690, 240, battle::DeployDirection::None);
+            deploy_oper(920, 660, 904, 660, 620, 305, battle::DeployDirection::None);
+            sleep(1000);
+            break;
+        }
+        case 3: {
+            if (m_cost < 5) {
+                return true;
+            }
             // 2级源石虫引诱器械;
-            deploy_oper(1000, 660, 977, 660, 690, 305, battle::DeployDirection::None);
+            deploy_oper(1000, 660, 977, 660, 620, 240, battle::DeployDirection::None);
+            sleep(1000);
+            break;
+        }
+        case 4: {
+            if (m_cost < 5) {
+                return true;
+            }
             // 1级源石虫引诱器械;
-            deploy_oper(1080, 660, 1050, 660, 620, 240, battle::DeployDirection::None);
+            deploy_oper(1080, 660, 1050, 660, 690, 240, battle::DeployDirection::None);
+            sleep(1000);
+            break;
+        }
+        case 5: {
+            if (m_cost < 10) {
+                return true;
+            }
+            // 便携式补给站
+            deploy_oper(1160, 660, 1169, 660, 540, 320, battle::DeployDirection::Right);
+            sleep(1000);
+            break;
+        }
+        case 6: {
+            if (m_cost < 12) {
+                return true;
+            }
             // 夜刀
             deploy_oper(40, 660, 59, 660, 395, 340, battle::DeployDirection::Down, true, 560, 315);
             retreat_oper(475, 315, 605, 230);
             break;
         }
-        case 3: {
-            // 夜刀
-            deploy_oper(40, 660, 59, 660, 560, 340, battle::DeployDirection::Down);
-            retreat_oper(475, 315, 605, 230);
-            return true;
+        case 7: {
+            if (m_cost < 65) {
+                // 夜刀
+                deploy_oper(40, 660, 59, 660, 560, 340, battle::DeployDirection::Down);
+                retreat_oper(475, 315, 605, 230);
+                return true;
+            }
+            // 离开当前区块
+            ProcessTask(*this, {"Tales@RA@LeaveCurrentZone"}).run();
+            sleep(1000);
+            ProcessTask(*this, {"Tales@RA@DialogConfirmYellow"}).run();
+            sleep(1000);
+            break;
         }
         default:
             break;
