@@ -702,7 +702,7 @@ bool asst::ReclamationBattleTaskPlugin::do_once()
         // ———————— 幽邃巨洞 左上 ————————
         switch (m_step) {
         case 0: {
-            if (m_cost < 17) {
+            if (m_cost < 19) {
                 return true;
             }
             // 缄默德克萨斯
@@ -715,8 +715,10 @@ bool asst::ReclamationBattleTaskPlugin::do_once()
             if (m_cost < 19) {
                 return true;
             }
-            // 逻格斯
-            deploy_oper(760, 660, 759, 660, 770, 285, battle::DeployDirection::Left);
+            // 阿斯卡伦
+            deploy_oper(680, 660, 687, 660, 320, 335, battle::DeployDirection::Left, true, 520, 325);
+            // speed up
+            ctrler()->click(Point(1100, 55));
             break;
         }
         case 2: {
@@ -724,7 +726,7 @@ bool asst::ReclamationBattleTaskPlugin::do_once()
                 return true;
             }
             // 3级源石虫引诱器械;
-            deploy_oper(920, 660, 904, 660, 620, 305, battle::DeployDirection::None);
+            deploy_oper(920, 660, 905, 660, 840, 300, battle::DeployDirection::None);
             sleep(1000);
             break;
         }
@@ -733,7 +735,7 @@ bool asst::ReclamationBattleTaskPlugin::do_once()
                 return true;
             }
             // 2级源石虫引诱器械;
-            deploy_oper(1000, 660, 977, 660, 620, 240, battle::DeployDirection::None);
+            deploy_oper(1000, 660, 977, 660, 835, 250, battle::DeployDirection::None);
             sleep(1000);
             break;
         }
@@ -742,33 +744,34 @@ bool asst::ReclamationBattleTaskPlugin::do_once()
                 return true;
             }
             // 1级源石虫引诱器械;
-            deploy_oper(1080, 660, 1050, 660, 690, 240, battle::DeployDirection::None);
-            sleep(1000);
+            deploy_oper(1080, 660, 1050, 660, 910, 240, battle::DeployDirection::None);
+            sleep(2000);
             break;
         }
         case 5: {
+            if (m_cost < 19) {
+                return true;
+            }
+            // speed down
+            ctrler()->click(Point(1100, 55));
+            // 逻格斯
+            deploy_oper(600, 660, 614, 660, 895, 330, battle::DeployDirection::Left);
+            break;
+        }
+        case 6: {
             if (m_cost < 10) {
                 return true;
             }
             // 便携式补给站
-            deploy_oper(1160, 660, 1169, 660, 540, 320, battle::DeployDirection::Right);
+            deploy_oper(1160, 660, 1169, 660, 650, 370, battle::DeployDirection::Right);
             sleep(1000);
             break;
         }
-        case 6: {
-            if (m_cost < 12) {
-                return true;
-            }
-            // 夜刀
-            deploy_oper(40, 660, 59, 660, 395, 340, battle::DeployDirection::Down, true, 560, 315);
-            retreat_oper(475, 315, 605, 230);
-            break;
-        }
         case 7: {
-            if (m_cost < 65) {
+            if (m_cost < 45) {
                 // 夜刀
-                deploy_oper(40, 660, 59, 660, 560, 340, battle::DeployDirection::Down);
-                retreat_oper(475, 315, 605, 230);
+                deploy_oper(40, 660, 59, 660, 570, 370, battle::DeployDirection::Left);
+                retreat_oper(480, 360, 605, 230);
                 return true;
             }
             // 离开当前区块
