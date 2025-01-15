@@ -13025,7 +13025,7 @@
         "algorithm": "JustReturn",
         "action": "Swipe",
         "specificRect": [640, 70, 0, 0],
-        "rectMove": [900, 640, 0, 0],
+        "rectMove": [900, 650, 0, 0],
         "specialParams": [1000, 0, 3, 0],
         "postDelay": 1000
     },
@@ -13033,7 +13033,7 @@
         "doc": "点击目标区块节点",
         "algorithm": "OcrDetect",
         "text": ["熔金巢穴"],
-        "ocrReplace": [["幽遮巨洞", "幽邃巨洞"], ["熔金单穴", "熔金巢穴"]],
+        "ocrReplace": [["幽遮巨洞", "幽邃巨洞"], ["熔金单穴", "熔金巢穴"], ["熔金窜穴", "熔金巢穴"]],
         "roi": [100, 100, 960, 500],
         "action": "ClickSelf"
     },
