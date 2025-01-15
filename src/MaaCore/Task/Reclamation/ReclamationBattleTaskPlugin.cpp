@@ -159,6 +159,10 @@ bool asst::ReclamationBattleTaskPlugin::do_once()
         m_cost = 0;
     }
 
+    if (m_cost >= 100) {
+        m_cost = 0;
+    }
+
     switch (m_strategy) {
     case 0: {
         // ———————— 虫影密植 通用 ————————
