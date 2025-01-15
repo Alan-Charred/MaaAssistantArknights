@@ -749,13 +749,15 @@ bool asst::ReclamationBattleTaskPlugin::do_once()
             break;
         }
         case 5: {
-            if (m_cost < 19) {
+            if (m_cost < 20) {
                 return true;
             }
             // speed down
             ctrler()->click(Point(1100, 55));
+            sleep(1000);
             // 逻格斯
             deploy_oper(600, 660, 614, 660, 895, 330, battle::DeployDirection::Left);
+            sleep(1000);
             break;
         }
         case 6: {
@@ -768,7 +770,7 @@ bool asst::ReclamationBattleTaskPlugin::do_once()
             break;
         }
         case 7: {
-            if (m_cost < 45) {
+            if (m_cost < 50) {
                 // 夜刀
                 deploy_oper(40, 660, 59, 660, 570, 370, battle::DeployDirection::Left);
                 retreat_oper(480, 360, 605, 230);
